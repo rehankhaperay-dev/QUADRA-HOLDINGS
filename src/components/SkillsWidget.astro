@@ -1,38 +1,22 @@
 ---
-interface Skill {
-  name: string;
-  level: 'Expert' | 'Advanced' | 'Intermediate';
-  icon: string;
-}
-
-const skills: Skill[] = [
-  { name: 'JavaScript', level: 'Expert', icon: '⚡' },
-  { name: 'TypeScript', level: 'Expert', icon: '📘' },
-  { name: 'React', level: 'Expert', icon: '⚛️' },
-  { name: 'Node.js', level: 'Advanced', icon: '🟢' },
-  { name: 'Python', level: 'Advanced', icon: '🐍' },
+import { iconSrcSet, withBase } from '../lib/paths';
+const services = [
+  { id: 'business', number: '01', title: 'Business websites', short: 'A home for your business online', detailTitle: 'Business websites', detail: 'A simple website that introduces your business, explains your services, and gives visitors a clear way to contact you.', icon: 'storefront' },
+  { id: 'landing', number: '02', title: 'Landing pages', short: 'One clear message, thoughtfully presented', detailTitle: 'Landing pages', detail: 'A focused page built around one goal — such as enquiries, bookings, or learning more about a service.', icon: 'diamond' },
+  { id: 'redesign', number: '03', title: 'Website redesigns', short: 'A fresh perspective on an existing site', detailTitle: 'Website redesigns', detail: 'A visual refresh for an existing website, with attention to layout, readability, consistency, and mobile usability.', icon: 'spark' },
 ];
-
-const levelColors = {
-  Expert: 'bg-blue-100 text-blue-700',
-  Advanced: 'bg-green-100 text-green-700',
-  Intermediate: 'bg-yellow-100 text-yellow-700'
-};
 ---
-
-<div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-  <h3 class="text-2xl font-semibold mb-4">Skills</h3>
-  <div class="space-y-4">
-    {skills.map((skill) => (
-      <div class="flex items-center justify-between p-3 hover:bg-apple-gray-50 rounded-xl transition-colors">
-        <div class="flex items-center gap-3">
-          <span class="text-xl">{skill.icon}</span>
-          <span class="font-medium text-apple-gray-500">{skill.name}</span>
-        </div>
-        <span class={`px-3 py-1 rounded-full text-sm font-medium ${levelColors[skill.level]}`}>
-          {skill.level}
-        </span>
-      </div>
-    ))}
+<section class="widget-panel services-widget reveal" id="services" aria-labelledby="services-heading">
+  <div class="widget-heading"><div><span class="widget-kicker">01 / WHAT I DO</span><h2 id="services-heading">Services</h2></div><div class="carousel-buttons" data-js-control hidden><button class="round-control" type="button" data-service-prev aria-label="Previous service">←</button><button class="round-control" type="button" data-service-next aria-label="Next service">→</button></div></div>
+  <p class="widget-lead">Choose a service to see how I can help you build or refresh your online presence.</p>
+  <div class="service-layout">
+  <div class="service-track" data-service-track tabindex="0" role="region" aria-label="Services. Choose a service or swipe to see its description.">
+    {services.map((service, i) => <a href={`#service-${service.id}`} class:list={['service-card', { 'is-active': i === 0 }]} data-service-select={i} aria-current={i === 0 ? 'true' : undefined}><span class="service-icon" aria-hidden="true"><img src={withBase(`images/ai/${service.icon}.webp`)} srcset={iconSrcSet(service.icon)} sizes="52px" width="192" height="192" loading="lazy" decoding="async" alt="" /></span><span class="service-card-body"><span class="service-card-title">{service.title}</span><span class="service-card-copy">{service.short}</span></span><span class="service-badge">{service.number}</span></a>)}
   </div>
-</div>
+  <div class="service-details" data-service-panels>
+    {services.map((service, i) => <div id={`service-${service.id}`} class:list={['service-detail', { 'is-active': i === 0 }]} data-service-panel={i}><span class="detail-label">SERVICE {service.number} / 03</span><h3>{service.detailTitle}</h3><p>{service.detail}</p><a class="text-link" href="#contact">Discuss this service <span aria-hidden="true">↗</span></a></div>)}
+    <span class="sr-only" aria-live="polite" data-service-status></span>
+  </div>
+  </div>
+  <p class="mobile-swipe-hint">CHOOSE A SERVICE OR SWIPE <span aria-hidden="true">↔</span></p>
+</section>

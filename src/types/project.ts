@@ -1,10 +1,14 @@
+/** A portfolio entry. Leave image undefined until a real practice project exists. */
 export interface Project {
-  id: number;
+  id: string;
   title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;
+  summary: string;
+  goal: string;
+  builtWith: string;
+  image?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  };
 }

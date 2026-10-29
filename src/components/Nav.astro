@@ -1,0 +1,56 @@
+---
+import { iconSrcSet, withBase } from '../lib/paths';
+const primaryLinks = [
+  { href: '#services', label: 'Services' },
+  { href: '#work', label: 'Portfolio' },
+  { href: '#process', label: 'Process' },
+  { href: '#about', label: 'About' },
+];
+const drawerLinks = [
+  { href: '#top', label: 'Home', icon: 'emblem' },
+  { href: '#services', label: 'Services', icon: 'storefront' },
+  { href: '#work', label: 'Portfolio', icon: 'portfolio' },
+  { href: '#process', label: 'Process', icon: 'process' },
+  { href: '#about', label: 'About', icon: 'globe' },
+  { href: '#pricing', label: 'Pricing', icon: 'pricing' },
+  { href: '#contact', label: 'Contact', icon: 'mail' },
+];
+---
+<header class="site-header" data-header>
+  <div class="nav-wrap shell">
+    <a class="brand" href="#top" aria-label="QUADRA HOLDINGS, back to top">
+      <img class="brand-mark" src={withBase("images/ai/emblem.webp")} srcset={iconSrcSet("emblem")} sizes="(max-width: 600px) 34px, 37px" alt="" width="42" height="42" />
+      <span class="brand-name"><strong>QUADRA</strong> <small>HOLDINGS</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {primaryLinks.map((link) => <a href={link.href} data-nav-link>{link.label}</a>)}
+    </nav>
+    <a href="#contact" class="nav-cta magnetic" data-nav-link>Contact <span aria-hidden="true">↗</span></a>
+    <!-- Native disclosure remains usable without JavaScript. The same drawer
+         is available on desktop and mobile, enhanced with focus management. -->
+    <details class="mobile-nav" data-mobile-nav>
+      <summary aria-controls="site-drawer">
+        <span class="menu-trigger-content"><img src={withBase("images/ai/menu.webp")} srcset={iconSrcSet("menu")} sizes="28px" width="192" height="192" alt="" /> <span>Menu</span></span>
+        <span class="menu-close-content">Close <span aria-hidden="true">×</span></span>
+      </summary>
+      <div class="mobile-nav-backdrop" data-menu-backdrop aria-hidden="true"></div>
+      <div class="mobile-nav-panel" id="site-drawer">
+        <div class="drawer-brand">
+          <img src={withBase("images/ai/menu.webp")} srcset={iconSrcSet("menu")} sizes="52px" width="192" height="192" alt="" />
+          <span><strong>QUADRA</strong> <small>HOLDINGS</small></span>
+        </div>
+        <p class="menu-eyebrow">EXPLORE QUADRA</p>
+        <nav class="drawer-links" aria-label="Site menu">
+          {drawerLinks.map((link) => (
+            <a href={link.href} data-nav-link>
+              <span class="drawer-icon" aria-hidden="true"><img src={withBase(`images/ai/${link.icon}.webp`)} srcset={iconSrcSet(link.icon)} sizes="38px" width="192" height="192" loading="lazy" decoding="async" alt="" /></span>
+              <span class="drawer-link-label">{link.label}</span>
+              <span class="drawer-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </nav>
+        <p class="menu-foot">SAUDI ARABIA <span>·</span> ONLINE WORLDWIDE</p>
+      </div>
+    </details>
+  </div>
+</header>

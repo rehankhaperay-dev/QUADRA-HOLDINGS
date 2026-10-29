@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Quadra Holdings emblem">
+  <defs>
+    <linearGradient id="quadra-emerald" x1="4" y1="4" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#087A59"/>
+      <stop offset="0.58" stop-color="#159B72"/>
+      <stop offset="1" stop-color="#087A59"/>
+    </linearGradient>
+  </defs>
+  <path d="M29 4H21C11.61 4 4 11.61 4 21v8h8v-8c0-4.97 4.03-9 9-9h8V4Z" fill="url(#quadra-emerald)"/>
+  <path d="M35 4h8c9.39 0 17 7.61 17 17v8h-8v-8c0-4.97-4.03-9-9-9h-8V4Z" fill="url(#quadra-emerald)"/>
+  <path d="M4 35v8c0 9.39 7.61 17 17 17h8v-8h-8c-4.97 0-9-4.03-9-9v-8H4Z" fill="url(#quadra-emerald)"/>
+  <path d="M60 35v8c0 9.39-7.61 17-17 17h-8v-8h8c4.97 0 9-4.03 9-9v-8h8Z" fill="url(#quadra-emerald)"/>
+  <path d="m40.8 40.8 14.8 14.8" fill="none" stroke="#D6A65D" stroke-width="4.2" stroke-linecap="round"/>
+</svg>

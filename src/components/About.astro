@@ -1,0 +1,9 @@
+---
+import { iconSrcSet, withBase } from '../lib/paths';
+import InfoWidgets from './InfoWidgets.astro';
+---
+<section class="widget-panel about-widget reveal" id="about" aria-labelledby="about-heading">
+  <div class="widget-heading"><div><span class="widget-kicker">04 / THE PERSON BEHIND IT</span><h2 id="about-heading">About Quadra Holdings</h2></div><img src={withBase("images/ai/emblem.webp")} srcset={iconSrcSet("emblem")} sizes="56px" width="46" height="46" alt="" class="about-mark" /></div>
+  <div class="about-content"><p>Quadra Holdings is an emerging web-design service serving businesses in Saudi Arabia and worldwide. I’m building my skills through practice projects and aim to create clean, practical websites that present a business clearly and make it easy for visitors to get in touch.</p><p>I’m developing my knowledge and continuing to pursue my passion for web design. My focus is on learning, improving through practice, and helping small businesses present themselves clearly online. I welcome opportunities to discuss a project, understand the goal, and see whether I’m a good fit.</p></div>
+  <InfoWidgets />
+</section>

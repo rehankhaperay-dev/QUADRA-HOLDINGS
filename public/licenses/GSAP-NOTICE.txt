@@ -1,0 +1,7 @@
+GSAP, CSSPlugin, Observer, and ScrollTrigger 3.12.7
+Copyright 2008-2025, GreenSock. All rights reserved.
+Subject to the terms at https://gsap.com/standard-license or, for Club GSAP
+members, the agreement issued with that membership.
+Author: Jack Doyle, jack@greensock.com
+
+The original license banners are also retained in the generated JavaScript.

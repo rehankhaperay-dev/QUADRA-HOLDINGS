@@ -1,81 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Hero from '../components/Hero.astro'
-import InfoWidgets from '../components/InfoWidgets.astro'
-import SkillsWidget from '../components/SkillsWidget.astro'
-import ProjectsWidget from '../components/ProjectsWidget.astro'
-import ExperienceWidget from '../components/ExperienceWidget.astro'
-import ContactSection from '../components/ContactSection.astro'
-import BlogWidgets from '../components/BlogWidgets.astro'
-import AchievementsWidget from '../components/AchievementsWidget.astro'
-import TestimonialsWidget from '../components/TestimonialsWidget.astro'
+import { iconSrcSet, withBase } from '../lib/paths';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import SkillsWidget from '../components/SkillsWidget.astro';
+import ProjectsWidget from '../components/ProjectsWidget.astro';
+import ExperienceWidget from '../components/ExperienceWidget.astro';
+import Pricing from '../components/Pricing.astro';
+import About from '../components/About.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
 ---
-
-<Layout title="Modern Developer Portfolio">
-  <main>
+<Layout>
+  <Nav />
+  <main id="main">
     <Hero />
-
-    <section class="py-20 px-4">
-      <div class="container mx-auto max-w-6xl">
-        <div class="mb-8">
-          <InfoWidgets />
-        </div>
-        <div class="space-y-8 mb-8">
-          <AchievementsWidget />
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <SkillsWidget />
-          <ProjectsWidget />
-        </div>
-        <div class="space-y-8 mb-8">
-          <ExperienceWidget />
-        </div>
-        <div class="space-y-8 mb-8">
-          <BlogWidgets />
-        </div>
-        <div class="space-y-8 mb-8">
-          <TestimonialsWidget />
-        </div>
-        <div class="space-y-8 mb-8">
-          <ContactSection />
-        </div>
+    <!-- One clear journey: services → portfolio → process → about → contact.
+         The familiar rounded upstream widgets and visual system are retained. -->
+    <section class="dashboard-section" aria-label="Quadra Holdings information" data-reactive-background>
+      <div class="dashboard-ambient" aria-hidden="true">
+        <img class="ambient-object ambient-one" src={withBase("images/ai/diamond.webp")} srcset={iconSrcSet("diamond")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" loading="lazy" />
+        <img class="ambient-object ambient-two" src={withBase("images/ai/spark.webp")} srcset={iconSrcSet("spark")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" loading="lazy" />
+      </div>
+      <div class="dashboard-shell">
+        <SkillsWidget />
+        <ProjectsWidget />
+        <ExperienceWidget />
+        <About />
+        <Pricing />
+        <FAQ />
+        <ContactSection />
       </div>
     </section>
   </main>
+  <Footer />
 </Layout>
-
-<script>
-  // import { gsap } from 'gsap'
-  // import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-  // gsap.registerPlugin(ScrollTrigger)
-
-  // // Animate widgets on scroll
-  // // Animate white background widgets
-  // gsap.utils.toArray('.bg-white\\/80').forEach((widget: any) => {
-  //   gsap.from(widget, {
-  //     y: 50,
-  //     opacity: 0,
-  //     duration: 1,
-  //     scrollTrigger: {
-  //       trigger: widget,
-  //       start: 'top bottom-=100',
-  //       toggleActions: 'play none none reverse',
-  //     },
-  //   })
-  // })
-
-  // // Animate achievements widget
-  // gsap.utils.toArray('.bg-gradient-to-r').forEach((widget: any) => {
-  //   gsap.from(widget, {
-  //     y: 50,
-  //     opacity: 0,
-  //     duration: 1,
-  //     scrollTrigger: {
-  //       trigger: widget,
-  //       start: 'top bottom-=100',
-  //       toggleActions: 'play none none reverse',
-  //     },
-  //   })
-  // })
-</script>

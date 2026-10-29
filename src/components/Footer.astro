@@ -1,0 +1,5 @@
+---
+import { iconSrcSet, withBase } from '../lib/paths';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer"><div class="dashboard-shell footer-inner"><a class="brand" href="#top" aria-label="QUADRA HOLDINGS, back to top"><img class="brand-mark" src={withBase("images/ai/emblem.webp")} srcset={iconSrcSet("emblem")} sizes="(max-width: 600px) 34px, 37px" width="36" height="36" alt="" /><span class="brand-name"><strong>QUADRA</strong> <small>HOLDINGS</small></span></a><p>© {year} Quadra Holdings <span>·</span> Saudi Arabia &amp; online worldwide</p><div><a href={withBase("licenses/APPLE-STYLE-PORTFOLIO-MIT.txt")}>Template license</a><a href="#top">Back to top ↑</a></div></div></footer>

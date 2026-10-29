@@ -1,120 +1,23 @@
 ---
-interface Experience {
-  title: string;
-  company: string;
-  period: string;
-  description: string[];
-  technologies: string[];
-}
-
-interface Education {
-  degree: string;
-  school: string;
-  period: string;
-  achievements: string[];
-}
-
-const experiences: Experience[] = [
-  {
-    title: "Senior Software Engineer",
-    company: "Tech Solutions Inc.",
-    period: "2021 - Present",
-    description: [
-      "Led development of cloud-native applications using microservices architecture",
-      "Mentored junior developers and conducted code reviews",
-      "Improved system performance by 40% through optimization"
-    ],
-    technologies: ["React", "Node.js", "AWS", "Docker"]
-  },
-  {
-    title: "Software Developer",
-    company: "Digital Innovations",
-    period: "2019 - 2021",
-    description: [
-      "Developed full-stack web applications for enterprise clients",
-      "Implemented CI/CD pipelines reducing deployment time by 60%"
-    ],
-    technologies: ["Vue.js", "Python", "PostgreSQL"]
-  }
-];
-
-const education: Education[] = [
-  {
-    degree: "Master of Science in Computer Science",
-    school: "Tech University",
-    period: "2017 - 2019",
-    achievements: [
-      "Specialized in Machine Learning and AI",
-      "Published research paper on Neural Networks",
-      "GPA: 3.9/4.0"
-    ]
-  },
-  {
-    degree: "Bachelor of Science in Software Engineering",
-    school: "State University",
-    period: "2013 - 2017",
-    achievements: [
-      "Dean's List all semesters",
-      "Led Programming Club",
-      "Completed honors thesis on distributed systems"
-    ]
-  }
+import { iconSrcSet, withBase } from '../lib/paths';
+const steps = [
+  { icon: 'globe', number: '01', name: 'Discover', title: 'Understand the goal', text: 'Learn about the business, audience, services, and what the website should help visitors do.', note: 'Your goals and the people you want to reach set the direction.' },
+  { icon: 'diamond', number: '02', name: 'Plan', title: 'Plan the page', text: 'Organize the content into a clear structure before building the design.', note: 'The structure takes shape around what your website needs to communicate.' },
+  { icon: 'storefront', number: '03', name: 'Build', title: 'Build and review', text: 'Create the agreed page layout and review it with the client for feedback.', note: 'The visual design and practical details come together across screen sizes.' },
+  { icon: 'spark', number: '04', name: 'Launch', title: 'Prepare to publish', text: 'Confirm mobile layout, links, contact details, and any hosting or domain costs before launch.', note: 'A considered final review helps get everything ready for the next step.' },
 ];
 ---
-
-<div class="space-y-8">
-  <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-    <h3 class="text-2xl font-semibold mb-6">Work Experience</h3>
-    <div class="space-y-6">
-      {experiences.map((exp) => (
-        <div class="border-l-2 border-blue-500 pl-4 pb-6">
-          <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-4">
-            <div>
-              <h4 class="text-xl font-medium text-apple-gray-500">{exp.title}</h4>
-              <p class="text-apple-gray-400">{exp.company}</p>
-            </div>
-            <span class="text-sm text-apple-gray-300 bg-apple-gray-100 px-3 py-1 rounded-full whitespace-nowrap">
-              {exp.period}
-            </span>
-          </div>
-          <ul class="list-disc list-inside text-apple-gray-400 mb-3 space-y-1">
-            {exp.description.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-          <div class="flex flex-wrap gap-2">
-            {exp.technologies.map((tech) => (
-              <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
+<!-- The template's experience timeline becomes a truthful project process. -->
+<section class="widget-panel process-widget reveal" id="process" aria-labelledby="process-heading">
+  <div class="widget-heading"><div><span class="widget-kicker">03 / HOW IT COMES TOGETHER</span><h2 id="process-heading">How I work</h2></div><span class="widget-heading-note">A SIMPLE FOUR-STEP PROCESS</span></div>
+  <p class="widget-lead process-lead">I aim to keep projects clear and collaborative: agree on the scope, communicate openly, and confirm costs before any paid tools or services are used.</p>
+  <div class="process-layout">
+    <div class="process-steps" aria-label="Choose a process step">
+      {steps.map((step, i) => <a href={`#process-step-${step.number}`} class:list={['process-step', { 'is-active': i === 0 }]} data-process-select={i} aria-current={i === 0 ? 'step' : undefined}><img class="process-icon" src={withBase(`images/ai/${step.icon}.webp`)} srcset={iconSrcSet(step.icon)} sizes="42px" width="192" height="192" loading="lazy" decoding="async" alt="" /><span class="process-step-copy"><strong>{step.title}</strong><small>{step.name}</small></span><span class="step-badge">{step.number} / 04</span></a>)}
+    </div>
+    <div class="process-panels" data-process-panels>
+      {steps.map((step, i) => <div id={`process-step-${step.number}`} class:list={['process-panel', { 'is-active': i === 0 }]} data-process-panel={i}><span class="detail-label">STEP {step.number} / {step.name.toUpperCase()}</span><h3>{step.title}</h3><p>{step.text}</p><div class="process-note"><img src={withBase(`images/ai/${step.icon}.webp`)} srcset={iconSrcSet(step.icon)} sizes="42px" width="192" height="192" loading="lazy" decoding="async" alt="" aria-hidden="true" />{step.note}</div></div>)}
+      <span class="sr-only" aria-live="polite" data-process-status></span>
     </div>
   </div>
-
-  <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-    <h3 class="text-2xl font-semibold mb-6">Education</h3>
-    <div class="space-y-6">
-      {education.map((edu) => (
-        <div class="border-l-2 border-blue-500 pl-4 pb-6">
-          <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-4">
-            <div>
-              <h4 class="text-xl font-medium text-apple-gray-500">{edu.degree}</h4>
-              <p class="text-apple-gray-400">{edu.school}</p>
-            </div>
-            <span class="text-sm text-apple-gray-300 bg-apple-gray-100 px-3 py-1 rounded-full whitespace-nowrap">
-              {edu.period}
-            </span>
-          </div>
-          <ul class="list-disc list-inside text-apple-gray-400 space-y-1">
-            {edu.achievements.map((achievement) => (
-              <li>{achievement}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+</section>

@@ -1,39 +1,43 @@
 ---
+import { iconSrcSet, withBase } from '../lib/paths';
 import Scene3D from './Scene3D';
+const slides = [
+  { text: 'Premium-quality websites without the premium agency price.', detail: 'Business websites · Landing pages · Redesigns' },
+  { text: 'Clean, thoughtful design at a fair price.', detail: 'Made around your business and your goals' },
+  { text: 'Let’s make your next website feel like you.', detail: 'Saudi Arabia · Available online worldwide' },
+];
 ---
-
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 z-0">
-    <Scene3D client:load />
+<!-- Reworked from the original template's centered, full-height profile hero. -->
+<section class="hero" id="top" aria-label="Introduction" data-reactive-background>
+  <div class="hero-ambient" aria-hidden="true">
+    <span class="floating-orb orb-one"><img src={withBase("images/ai/diamond.webp")} srcset={iconSrcSet("diamond")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" /></span>
+    <span class="floating-orb orb-two"><img src={withBase("images/ai/spark.webp")} srcset={iconSrcSet("spark")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" /></span>
+    <span class="floating-orb orb-three"><img src={withBase("images/ai/globe.webp")} srcset={iconSrcSet("globe")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" /></span>
+    <span class="floating-orb orb-four"><img src={withBase("images/ai/diamond.webp")} srcset={iconSrcSet("diamond")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" /></span>
+    <span class="floating-orb orb-five"><img src={withBase("images/ai/spark.webp")} srcset={iconSrcSet("spark")} sizes="(max-width: 600px) 45px, 72px" width="192" height="192" alt="" /></span>
   </div>
-  
-  <div class="container mx-auto px-4 z-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="flex flex-col items-center mb-8 animate-fade-in">
-        <div class="w-32 h-32 rounded-full border-4 border-white/50 shadow-xl mb-6 overflow-hidden bg-gradient-to-br from-blue-100 to-blue-50">
-          <img
-            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&auto=format&fit=crop&q=80"
-            alt="Profile"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <h1 class="text-6xl font-bold mb-2">John Doe</h1>
-        <h2 class="text-3xl text-apple-gray-400 mb-6">Software Developer</h2>
+  <div class="hero-inner">
+    <div class="hero-emblem" aria-hidden="true">
+      <Scene3D client:media="(min-width: 769px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)" />
+    </div>
+    <p class="hero-eyebrow"><span></span> INDEPENDENT WEB DESIGN</p>
+    <h1>QUADRA HOLDINGS</h1>
+    <p class="hero-role">Web design for small businesses</p>
+    <div class="hero-track" data-hero-track tabindex="0" role="region" aria-label="Introduction slides. Scroll sideways or use the controls to explore.">
+      {slides.map((slide, i) => <div class="hero-slide" role="group" aria-label={`Slide ${i + 1} of ${slides.length}`}><p class="hero-statement">{slide.text}</p><p class="hero-services">{slide.detail}</p></div>)}
+    </div>
+    <div class="hero-actions">
+      <a class="button button-primary magnetic" href="#services">Explore services <span aria-hidden="true">↓</span></a>
+      <a class="button button-outline magnetic" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero-controls" data-js-control hidden>
+      <button class="hero-arrow" type="button" data-hero-prev aria-label="Previous introduction slide">←</button>
+      <div class="hero-pagination" aria-label="Choose an introduction slide">
+        {slides.map((_, i) => <button type="button" class:list={['hero-dot', { 'is-active': i === 0 }]} data-hero-dot={i} aria-label={`Show introduction slide ${i + 1}`} aria-current={i === 0 ? 'true' : undefined}><span></span></button>)}
       </div>
-      <p class="text-xl text-apple-gray-500 mb-8 animate-slide-up">
-        Building elegant solutions for complex problems
-      </p>
-      <div class="flex gap-4 justify-center animate-slide-up" style="animation-delay: 200ms;">
-        <a href="/projects" class="bg-apple-gray-500 text-white px-6 py-3 rounded-full hover:bg-apple-gray-400 transition-colors">
-          View My Work
-        </a>
-        <a href="#contact" class="border border-apple-gray-500 px-6 py-3 rounded-full hover:bg-apple-gray-100 transition-colors">
-          Get in Touch
-        </a>
-        <a href="https://github.com/itsyujay/apple-style-portfolio" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors">
-          Give me a star on GitHub
-        </a>
-      </div>
+      <button class="hero-arrow" type="button" data-hero-next aria-label="Next introduction slide">→</button>
+      <span class="sr-only" data-hero-count>01 / 03</span><span class="sr-only" aria-live="polite" data-hero-status></span>
     </div>
   </div>
+  <a class="hero-scroll" href="#services" aria-label="Explore services"><span>EXPLORE SERVICES</span><span aria-hidden="true">↓</span></a>
 </section>
